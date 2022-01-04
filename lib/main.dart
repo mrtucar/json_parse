@@ -29,12 +29,12 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      //home: const MyHomePage(title: 'Json Parse'),
+
       home: Scaffold(
         appBar: AppBar(
             title: Text("Json Parçalama")
         ),
-        body:KullaniciListesi(),
+        body:MyHomePage(),
       )
 
 

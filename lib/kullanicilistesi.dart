@@ -34,19 +34,21 @@ class _KullaniciListesi extends State<KullaniciListesi> {
     return Card(
       child: ListTile(
         title:Text(_kullanicililar[index].name.toString()),
-        leading: Text(_kullanicililar[index].email.toString()),
+        subtitle: Text(_kullanicililar[index].email.toString()),
+        leading: Icon(Icons.contact_page_rounded),
         onTap: () {
           alertDialog = AlertDialog(
               title: Text("Adress"),
-              content: Column(
+              content:SizedBox(
+                  height: 200,
+                  child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(_kullanicililar[index].address!.street!.toString()),
                   Text(_kullanicililar[index].address!.suite!.toString()),
                   Text(_kullanicililar[index].address!.city!.toString())
                 ],
-              )
-          
+              ))
           );
           showDialog(context: context, builder: (_) => alertDialog);
         },
