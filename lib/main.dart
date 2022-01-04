@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'Post.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
+import 'postlistesi.dart';
+import 'kullanicilistesi.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -28,71 +29,19 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Json Parse'),
+      //home: const MyHomePage(title: 'Json Parse'),
+      home: Scaffold(
+        appBar: AppBar(
+            title: Text("Json Parçalama")
+        ),
+        body:KullaniciListesi(),
+      )
+
+
+
 
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  List<Post> _postlar = [];
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
-      _verileriInternettenCek();
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount:_postlar.length,
-      itemBuilder: _buildListItem,
-    );
-  }
-
-  void _verileriInternettenCek() async {
-    Uri uri = Uri.parse("https://jsonplaceholder.typicode.com/posts");
-    http.Response response = await http.get(uri);
-    List<dynamic> parsedResponse =
-    json.decode(response.body);
-    if (parsedResponse.length>0) {
-      for (var item in parsedResponse) {
-        _postlar.add(Post.fromJson(item));
-      }
-    }
-
-    setState(() {});
-
-  }
-
-  Widget _buildListItem(BuildContext context, int index) {
-    return Card(
-      child: ListTile(
-        title: Text(_postlar[index].title.toString()),
-        leading: Icon(Icons.account_circle),
-      ),
-    );
-
-  }
-}
