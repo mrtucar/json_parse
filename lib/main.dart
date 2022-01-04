@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'postlistesi.dart';
 import 'kullanicilistesi.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -34,12 +35,8 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
             title: Text("Json Parçalama")
         ),
-        body:MyHomePage(),
+        body:KullaniciListesi(),
       )
-
-
-
-
     );
   }
 }
