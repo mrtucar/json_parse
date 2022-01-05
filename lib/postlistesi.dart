@@ -33,8 +33,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _verileriInternettenCek() async {
-    Uri uri = Uri.parse("https://jsonplaceholder.typicode.com/posts");
-    http.Response response = await http.get(uri);
+    Uri uri =
+    Uri.parse("https://jsonplaceholder.typicode.com/posts");
+    http.Response response =
+    await http.get(uri);
     List<dynamic> parsedResponse =
     json.decode(response.body);
     if (parsedResponse.length>0) {

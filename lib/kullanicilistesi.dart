@@ -57,7 +57,8 @@ class _KullaniciListesi extends State<KullaniciListesi> {
   }
 
   void _verileriInternettenCek() async {
-    Uri uri = Uri.parse("https://jsonplaceholder.typicode.com/users");
+    Uri uri =
+    Uri.parse("https://jsonplaceholder.typicode.com/users");
     http.Response response = await http.get(uri);
     List<dynamic> parsedResponse =
     json.decode(response.body);
